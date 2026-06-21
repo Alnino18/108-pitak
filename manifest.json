@@ -1,0 +1,38 @@
+{
+  "name": "PITAK 108 — Hisob Taxtasi",
+  "short_name": "PITAK 108",
+  "description": "108 karta o'yini uchun professional hisob taxtasi",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0a0a14",
+  "theme_color": "#0d0d1a",
+  "orientation": "portrait",
+  "lang": "uz",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["games", "entertainment"],
+  "shortcuts": [
+    {
+      "name": "Yangi o'yin",
+      "url": "./index.html?new=1",
+      "description": "Yangi o'yin boshlash"
+    }
+  ]
+}
