@@ -231,7 +231,7 @@ body {
 
 .winner-info { flex: 1; }
 .winner-label { font-size: 11px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
-.winner-name { font-size: 22px; font-weight: 800; color: #fff; margin-top: 2px; }
+.winner-name { font-size: 22px; font-weight: 800; color: var(--text-primary); margin-top: 2px; }
 
 /* ===== SECTION LABEL ===== */
 .section-label {
@@ -614,6 +614,160 @@ body {
 
 .add-round-btn svg { flex-shrink: 0; }
 
+/* ===== VOICE INPUT ===== */
+.voice-row {
+  display: flex;
+  margin-bottom: 10px;
+}
+.voice-btn {
+  flex: 1;
+  height: 44px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.voice-btn.listening {
+  background: var(--red-soft);
+  border-color: var(--red-border);
+  color: var(--red);
+  animation: micPulse 1.2s ease infinite;
+}
+@keyframes micPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,69,58,0.35); }
+  50%      { box-shadow: 0 0 0 8px rgba(255,69,58,0); }
+}
+
+/* ===== ROUND TIMER ===== */
+.round-timer {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 5px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.3px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ===== ICON BUTTON ROW ===== */
+.icon-btn-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.icon-btn {
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-full);
+  padding: 5px 12px; font-size: 12px; color: var(--text-secondary); cursor: pointer;
+}
+
+/* ===== LEADERBOARD ===== */
+.lb-row {
+  display: grid;
+  grid-template-columns: 24px 1fr auto auto auto;
+  gap: 8px;
+  align-items: center;
+  background: var(--surface-1);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  margin-bottom: 6px;
+}
+.lb-rank { font-weight: 800; color: var(--text-tertiary); font-size: 13px; }
+.lb-name { font-weight: 600; font-size: 13px; }
+.lb-stat { font-size: 11px; color: var(--text-secondary); text-align: right; white-space: nowrap; }
+.lb-stat b { color: var(--text-primary); font-size: 13px; }
+
+/* ===== ARCHIVE ===== */
+.archive-item {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+.archive-item-top { display: flex; justify-content: space-between; align-items: center; }
+.archive-date { font-size: 11px; color: var(--text-tertiary); }
+.archive-winner { font-size: 14px; font-weight: 700; color: var(--gold); margin-top: 2px; }
+.archive-meta { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+.archive-del-btn { background: var(--red-soft); border: none; color: var(--red); border-radius: var(--radius-sm); width:28px; height:28px; font-size:13px; cursor:pointer; flex-shrink:0; }
+.archive-detail { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); display:none; }
+.archive-detail.open { display: block; }
+
+/* ===== CHART ===== */
+.chart-legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.chart-legend-item { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--text-secondary); }
+.chart-legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+/* ===== CONFETTI ===== */
+.confetti-piece {
+  position: fixed;
+  top: -12px;
+  width: 8px;
+  height: 14px;
+  opacity: 0.95;
+  border-radius: 2px;
+  z-index: 9999;
+  pointer-events: none;
+  animation-name: confettiFall;
+  animation-timing-function: cubic-bezier(0.35,0,0.65,1);
+  animation-fill-mode: forwards;
+}
+@keyframes confettiFall {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(105vh) translateX(var(--drift,0px)) rotate(var(--spin,540deg)); opacity: 0; }
+}
+
+/* ===== DEALER BADGE ===== */
+.dealer-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--gold-soft);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-full);
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 10px auto 0;
+  width: fit-content;
+  cursor: pointer;
+  user-select: none;
+}
+.dealer-badge .dealer-next { opacity: 0.6; font-size: 13px; margin-left: 2px; }
+
+/* ===== LANGUAGE SWITCHER ===== */
+.lang-switcher { display: flex; gap: 8px; margin-bottom: 16px; }
+.lang-btn {
+  flex: 1; height: 38px; border-radius: var(--radius-sm); border: 1px solid var(--border);
+  background: var(--surface-1); color: var(--text-secondary); font-size: 13px; font-weight: 700;
+  cursor: pointer; transition: all 0.2s;
+}
+.lang-btn.active { background: var(--gold-soft); border-color: var(--gold-border); color: var(--gold); }
+
+/* ===== AVATAR PICKER ===== */
+.avatar-preview-btn {
+  width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface-2);
+  font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0;
+  font-weight: 700; color: var(--text-secondary);
+}
+.avatar-picker-grid {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-top: 12px;
+}
+.avatar-picker-grid button {
+  aspect-ratio: 1; border-radius: 50%; border: 1px solid var(--border); background: var(--surface-1);
+  font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+}
+.avatar-picker-grid button.selected { border-color: var(--gold); background: var(--gold-soft); }
+
 /* ===== CONTROLS ===== */
 .controls {
   display: grid;
@@ -903,7 +1057,7 @@ table.hist td:first-child { color: var(--text-tertiary); font-weight: 600; }
   display: flex; gap: 8px; align-items: center; margin-bottom: 10px;
 }
 .settings-player-item input {
-  flex: 1; height: 36px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--surface-1); color: #fff; padding: 0 10px; font-size: 14px;
+  flex: 1; height: 36px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary); padding: 0 10px; font-size: 14px;
 }
 .settings-player-item input:focus { border-color: var(--gold); outline: none; }
 .settings-player-item button {
@@ -915,7 +1069,7 @@ table.hist td:first-child { color: var(--text-tertiary); font-weight: 600; }
   display: flex; gap: 8px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);
 }
 .add-player-form input {
-  flex: 1; height: 40px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--surface-1); color: #fff; padding: 0 12px; font-size: 14px;
+  flex: 1; height: 40px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary); padding: 0 12px; font-size: 14px;
 }
 .add-player-form input:focus { border-color: var(--gold); outline: none; }
 .add-player-form button {
@@ -935,13 +1089,20 @@ table.hist td:first-child { color: var(--text-tertiary); font-weight: 600; }
         <span>♠</span>
         <span>PITAK</span>
       </div>
-      <div style="display:flex; gap:8px;">
-        <button id="stats-btn" style="background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius-full); padding:5px 12px; font-size:12px; cursor:pointer;" title="Statistika">📊</button>
-        <button id="theme-btn" style="background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius-full); padding:5px 12px; font-size:12px; cursor:pointer;" title="Mavzu">☀️</button>
-        <button id="settings-btn" style="background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius-full); padding:5px 12px; font-size:12px; color:var(--text-secondary); cursor:pointer;" title="Sozlamalar">⚙️</button>
-        <div class="round-badge" id="round-badge">1-davr</div>
+      <div class="icon-btn-row">
+        <button id="chart-btn" class="icon-btn" data-i18n-title="chartTitle" title="Grafik">📈</button>
+        <button id="leaderboard-btn" class="icon-btn" data-i18n-title="leaderboardTitle" title="Reyting">🏆</button>
+        <button id="archive-btn" class="icon-btn" data-i18n-title="archiveTitle" title="O'yinlar tarixi">🗂</button>
+        <button id="stats-btn" class="icon-btn" data-i18n-title="statsTitle" title="Statistika">📊</button>
+        <button id="theme-btn" class="icon-btn" data-i18n-title="themeTitle" title="Mavzu">☀️</button>
+        <button id="settings-btn" class="icon-btn" data-i18n-title="settingsTitle" title="Sozlamalar">⚙️</button>
       </div>
     </div>
+    <div style="display:flex; gap:8px; justify-content:center; margin-top:10px;">
+      <div class="round-badge" id="round-badge">1-davr</div>
+      <div class="round-timer" id="round-timer">⏱ 00:00</div>
+    </div>
+    <div id="dealer-badge-slot"></div>
     <div class="hero">
       <div class="hero-num">108</div>
       <div class="hero-suits">
@@ -956,6 +1117,14 @@ table.hist td:first-child { color: var(--text-tertiary); font-weight: 600; }
 
   <!-- Install tip slot -->
   <div id="install-tip-slot"></div>
+
+  <!-- Voice input -->
+  <div class="voice-row">
+    <button id="voice-btn" class="voice-btn" type="button">
+      <span id="voice-btn-icon">🎙️</span>
+      <span id="voice-btn-label" data-i18n="voiceInputLabel">Ovozdan kiritish</span>
+    </button>
+  </div>
 
   <!-- Main app container -->
   <main id="app">
@@ -977,11 +1146,44 @@ table.hist td:first-child { color: var(--text-tertiary); font-weight: 600; }
 <div class="modal-overlay" id="stats-modal">
   <div class="modal">
     <div class="modal-header">
-      <h2>📊 Statistika</h2>
+      <h2>📊 <span data-i18n="statsTitle">Statistika</span></h2>
       <button class="modal-close" id="stats-close">✕</button>
     </div>
     <div class="modal-body" id="stats-body" style="padding-top:0;">
     </div>
+  </div>
+</div>
+
+<!-- Leaderboard Modal -->
+<div class="modal-overlay" id="leaderboard-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>🏆 <span data-i18n="leaderboardTitle">Umumiy reyting</span></h2>
+      <button class="modal-close" id="leaderboard-close">✕</button>
+    </div>
+    <div class="modal-body" id="leaderboard-body"></div>
+  </div>
+</div>
+
+<!-- Archive Modal -->
+<div class="modal-overlay" id="archive-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>🗂 <span data-i18n="archiveTitle">O'yinlar tarixi</span></h2>
+      <button class="modal-close" id="archive-close">✕</button>
+    </div>
+    <div class="modal-body" id="archive-body"></div>
+  </div>
+</div>
+
+<!-- Chart Modal -->
+<div class="modal-overlay" id="chart-modal">
+  <div class="modal" style="max-width:440px;">
+    <div class="modal-header">
+      <h2>📈 <span data-i18n="chartTitle">Ballar grafigi</span></h2>
+      <button class="modal-close" id="chart-close">✕</button>
+    </div>
+    <div class="modal-body" id="chart-body"></div>
   </div>
 </div>
 
@@ -994,7 +1196,20 @@ table.hist td:first-child { color: var(--text-tertiary); font-weight: 600; }
     </div>
     <div class="modal-body">
       <div id="edit-round-inputs"></div>
-      <button id="save-edit-round-btn" style="width:100%; height:44px; border-radius:var(--radius-sm); border:none; background:var(--gold); color:#000; font-weight:700; margin-top:20px; cursor:pointer;">Saqlash</button>
+      <button id="save-edit-round-btn" data-i18n="saveBtn" style="width:100%; height:44px; border-radius:var(--radius-sm); border:none; background:var(--gold); color:#000; font-weight:700; margin-top:20px; cursor:pointer;">Saqlash</button>
+    </div>
+  </div>
+</div>
+
+<!-- Avatar Picker Modal -->
+<div class="modal-overlay" id="avatar-picker-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>🎭 <span data-i18n="avatarPickerTitle">Avatar tanlash</span></h2>
+      <button class="modal-close" id="avatar-picker-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="avatar-picker-grid" id="avatar-picker-grid"></div>
     </div>
   </div>
 </div>
@@ -1006,12 +1221,18 @@ table.hist td:first-child { color: var(--text-tertiary); font-weight: 600; }
 <div class="modal-overlay" id="settings-modal">
   <div class="modal">
     <div class="modal-header">
-      <h2>⚙️ O'yinchilar</h2>
+      <h2>⚙️ <span data-i18n="settingsModalTitle">O'yinchilar</span></h2>
       <button class="modal-close" id="settings-close">✕</button>
     </div>
     <div class="modal-body">
+      <div class="section-label" style="margin-left:0;" data-i18n="languageLabel">Til</div>
+      <div class="lang-switcher" id="lang-switcher">
+        <button class="lang-btn" data-lang="uz">O'zbek</button>
+        <button class="lang-btn" data-lang="ru">Русский</button>
+        <button class="lang-btn" data-lang="en">English</button>
+      </div>
       <div style="margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--border); padding-bottom:16px;">
-        <span style="font-size:14px; font-weight:600;">Ovoz va Tebranish</span>
+        <span style="font-size:14px; font-weight:600;" data-i18n="soundLabel">Ovoz va Tebranish</span>
         <label style="position:relative; display:inline-block; width:44px; height:24px;">
           <input type="checkbox" id="sounds-toggle" style="opacity:0; width:0; height:0;">
           <span style="position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background-color:var(--surface-2); transition:.4s; border-radius:34px; border:1px solid var(--border);">
@@ -1023,13 +1244,13 @@ table.hist td:first-child { color: var(--text-tertiary); font-weight: 600; }
         #sounds-toggle:checked + span { background-color: var(--green); border-color:var(--green); }
         #sounds-toggle:checked + span .slider-dot { transform: translateX(20px); background-color:#fff; }
       </style>
-      <div class="section-label" style="margin-left:0;">Ismlarni tahrirlash</div>
+      <div class="section-label" style="margin-left:0;" data-i18n="editNamesLabel">Ismlarni tahrirlash</div>
       <div id="settings-players-list"></div>
       <div class="add-player-form">
-        <input type="text" id="new-player-name" placeholder="Yangi o'yinchi...">
-        <button id="add-player-btn">Qo'shish</button>
+        <input type="text" id="new-player-name" data-i18n-placeholder="newPlayerPlaceholder" placeholder="Yangi o'yinchi...">
+        <button id="add-player-btn" data-i18n="addBtn">Qo'shish</button>
       </div>
-      <p id="settings-warning" style="display:none; color:var(--orange); font-size:12px; margin-top:10px;">
+      <p id="settings-warning" data-i18n="settingsWarning" style="display:none; color:var(--orange); font-size:12px; margin-top:10px;">
         O'yin boshlangan! O'yinchilarni o'chirish uchun avval "Yangi o'yin" tugmasini bosing.
       </p>
     </div>
@@ -1042,22 +1263,167 @@ table.hist td:first-child { color: var(--text-tertiary); font-weight: 600; }
 
 /* ===== STATE ===== */
 var DEFAULT_PLAYERS = [
-  {id:"p1", name:"Ахмад",       initials:"АХ"},
-  {id:"p2", name:"Абдурахмон",  initials:"АБ"},
-  {id:"p3", name:"Бахтиер",     initials:"БХ"},
-  {id:"p4", name:"Бобир",       initials:"БО"},
-  {id:"p5", name:"Дилмурод",    initials:"ДИ"},
-  {id:"p6", name:"Мухаммаджон", initials:"МУ"},
-  {id:"p7", name:"Кобил",       initials:"КО"},
-  {id:"p8", name:"Холмурод",    initials:"ХО"}
+  {id:"p1", name:"Ахмад",       initials:"АХ", avatar:null},
+  {id:"p2", name:"Абдурахмон",  initials:"АБ", avatar:null},
+  {id:"p3", name:"Бахтиер",     initials:"БХ", avatar:null},
+  {id:"p4", name:"Бобир",       initials:"БО", avatar:null},
+  {id:"p5", name:"Дилмурод",    initials:"ДИ", avatar:null},
+  {id:"p6", name:"Мухаммаджон", initials:"МУ", avatar:null},
+  {id:"p7", name:"Кобил",       initials:"КО", avatar:null},
+  {id:"p8", name:"Холмурод",    initials:"ХО", avatar:null}
 ];
 
 var LIMIT    = 108;
 var RESET_AT = 107;
 var STORAGE  = "qarta108v3-state";
 var STATS_STORAGE = "qarta108v3-globalstats";
+var ARCHIVE_STORAGE = "qarta108v3-archive";
 
-var state = { rounds: [], blocked: {}, players: [], sounds: true };
+var CHART_COLORS = ["#f5c842","#ff453a","#30d158","#0a84ff","#bf5af2","#ff9f0a","#ff375f","#64d2ff","#a3f56f","#ff8fab"];
+
+var AVATAR_OPTIONS = ["😀","😎","🤠","🥳","🧔","👨‍🦱","👩‍🦱","👳","🧕","👴","👵","🤓","😼","🦁","🐯","🐺","🦊","🐻","🐸","🐵","🦅","🐉","🃏","👑","🔥","⚡","🎯","🍀","🎲","🍺"];
+
+var CURRENT_LANG = localStorage.getItem("qarta108-lang") || "uz";
+
+var I18N = {
+  uz: {
+    statsTitle: "Statistika", leaderboardTitle: "Umumiy reyting", archiveTitle: "O'yinlar tarixi",
+    chartTitle: "Ballar grafigi", themeTitle: "Mavzu", settingsTitle: "Sozlamalar",
+    settingsModalTitle: "O'yinchilar", avatarPickerTitle: "Avatar tanlash",
+    voiceInputLabel: "Ovozdan kiritish", voiceListening: "Tinglanmoqda... (to'xtatish uchun bosing)",
+    languageLabel: "Til", soundLabel: "Ovoz va Tebranish", editNamesLabel: "Ismlarni tahrirlash",
+    newPlayerPlaceholder: "Yangi o'yinchi...", addBtn: "Qo'shish", saveBtn: "Saqlash",
+    settingsWarning: "O'yin boshlangan! O'yinchilarni o'chirish uchun avval \"Yangi o'yin\" tugmasini bosing.",
+    sectionPlayers: "O'yinchilar", sectionBlocked: "Kelmagan o'yinchilar",
+    emptyAllOut: "Barcha o'yinchilar chiqib ketdi yoki blok qilingan.", emptyAllOutSub: "Yangi o'yin boshlang.",
+    winnerLabel: "G'olib!", gameOverLabel: "O'yin tugadi", allOutLabel: "Barcha o'yinchilar chiqib ketdi",
+    chipOut: "Chiqdi", chipBlocked: "Kelmadi", tapAvatarToReturn: "Avatarni bosib qaytaring",
+    saveRoundBtn: "{n}-davrni saqlash", undoBtn: "Bekor qilish", newGameBtn: "Yangi o'yin",
+    confirmResetText: "Barcha natijalar va bloklar o'chiriladi. Ishonchingiz komilmi?",
+    yesBtn: "Ha", noBtn: "Yo'q", roundHistory: "Davr tarixi ({n})", resetNote: "↺ — 107 ball bo'lib 0 ga tushdi",
+    roundLabel: "{n}-davr", editRoundTitle: "{n}-davrni Tahrirlash", cantDeleteDuringGame: "O'yin vaqtida o'chirib bo'lmaydi",
+    dealerLabel: "Diller", dealerNext: "keyingi: {name}",
+    toastReturned: "{name} o'yinga qaytarildi! 🎉", toastBlocked: "{name} kelmadi deb belgilandi 🚫",
+    toastEliminated: "{names} o'yindan chiqdi! 💀", toastReset: "{names} 107→0 ga tushdi! 🎲",
+    toastUndone: "Oxirgi davr bekor qilindi", toastNewGame: "Yangi o'yin boshlandi! 🃏",
+    toastRoundUpdated: "{n}-davr yangilandi!", toastStatsCleared: "Statistika tozalandi 🗑",
+    toastArchiveCleared: "Tarix tozalandi 🗑", toastNoVoiceSupport: "Brauzeringiz ovozli kiritishni qo'llab-quvvatlamaydi",
+    toastNotUnderstood: 'Tushunilmadi: "{text}"', toastPlayerInactive: "{name} faol emas",
+    toastMicDenied: "Mikrofonga ruxsat berilmagan", toastDangerZone: "{name} xavfli hududda! ({total}/108) ⚠️",
+    toastLangChanged: "Til o'zgartirildi 🌐", statsWins: "G'alabalar (Top 5)", statsResets: "107 qilib 0 ga tushganlar",
+    statsOuts: "O'yindan chiqqanlar", noData: "Ma'lumot yo'q", clearStats: "🗑 Statistikani tozalash",
+    clearStatsConfirm: "Barcha statistika (g'alabalar, resetlar, chiqishlar) butunlay o'chiriladi. Ishonchingiz komilmi?",
+    lbEmpty: "Hali hech qanday o'yin yakunlanmagan.", lbEmptySub: "Reyting uchun kamida bitta o'yinni \"Yangi o'yin\" orqali yakunlang.",
+    lbGames: "o'yin", lbWins: "g'alaba", archiveEmpty: "Hali arxivlangan o'yin yo'q.",
+    archiveEmptySub: "\"Yangi o'yin\" boshlaganingizda joriy o'yin shu yerga saqlanadi.",
+    archiveClear: "🗑 Barcha tarixni tozalash", archiveClearConfirm: "Barcha o'yinlar tarixini o'chirishga ishonchingiz komilmi?",
+    archiveNotFinished: "Yakunlanmagan", archiveFinalResult: "Yakuniy natija:", archivePlayersCount: "{n} o'yinchi",
+    archiveRoundsCount: "{n} davr", chartEmpty: "Hali davrlar kiritilmagan.", chartEmptySub: "Grafik ko'rish uchun kamida bitta davr kiriting."
+  },
+  ru: {
+    statsTitle: "Статистика", leaderboardTitle: "Общий рейтинг", archiveTitle: "История игр",
+    chartTitle: "График баллов", themeTitle: "Тема", settingsTitle: "Настройки",
+    settingsModalTitle: "Игроки", avatarPickerTitle: "Выбор аватара",
+    voiceInputLabel: "Голосовой ввод", voiceListening: "Слушаю... (нажмите для остановки)",
+    languageLabel: "Язык", soundLabel: "Звук и вибрация", editNamesLabel: "Редактировать имена",
+    newPlayerPlaceholder: "Новый игрок...", addBtn: "Добавить", saveBtn: "Сохранить",
+    settingsWarning: "Игра началась! Чтобы удалить игрока, сначала нажмите \"Новая игра\".",
+    sectionPlayers: "Игроки", sectionBlocked: "Отсутствующие игроки",
+    emptyAllOut: "Все игроки выбыли или заблокированы.", emptyAllOutSub: "Начните новую игру.",
+    winnerLabel: "Победитель!", gameOverLabel: "Игра окончена", allOutLabel: "Все игроки выбыли",
+    chipOut: "Выбыл", chipBlocked: "Отсутствует", tapAvatarToReturn: "Нажмите на аватар, чтобы вернуть",
+    saveRoundBtn: "Сохранить раунд {n}", undoBtn: "Отменить", newGameBtn: "Новая игра",
+    confirmResetText: "Все результаты и блокировки будут удалены. Вы уверены?",
+    yesBtn: "Да", noBtn: "Нет", roundHistory: "История раундов ({n})", resetNote: "↺ — набрано 107, сброшено до 0",
+    roundLabel: "Раунд {n}", editRoundTitle: "Редактировать раунд {n}", cantDeleteDuringGame: "Нельзя удалить во время игры",
+    dealerLabel: "Дилер", dealerNext: "далее: {name}",
+    toastReturned: "{name} вернулся в игру! 🎉", toastBlocked: "{name} отмечен как отсутствующий 🚫",
+    toastEliminated: "{names} выбыл из игры! 💀", toastReset: "{names} сброшен(ы) 107→0! 🎲",
+    toastUndone: "Последний раунд отменён", toastNewGame: "Новая игра началась! 🃏",
+    toastRoundUpdated: "Раунд {n} обновлён!", toastStatsCleared: "Статистика очищена 🗑",
+    toastArchiveCleared: "История очищена 🗑", toastNoVoiceSupport: "Ваш браузер не поддерживает голосовой ввод",
+    toastNotUnderstood: 'Не распознано: "{text}"', toastPlayerInactive: "{name} не активен",
+    toastMicDenied: "Доступ к микрофону запрещён", toastDangerZone: "{name} в опасной зоне! ({total}/108) ⚠️",
+    toastLangChanged: "Язык изменён 🌐", statsWins: "Победы (Топ 5)", statsResets: "Сбросы 107→0",
+    statsOuts: "Выбывшие", noData: "Нет данных", clearStats: "🗑 Очистить статистику",
+    clearStatsConfirm: "Вся статистика (победы, сбросы, выбывания) будет удалена навсегда. Вы уверены?",
+    lbEmpty: "Пока ни одна игра не завершена.", lbEmptySub: "Завершите хотя бы одну игру через \"Новая игра\", чтобы увидеть рейтинг.",
+    lbGames: "игр", lbWins: "побед", archiveEmpty: "Пока нет архивированных игр.",
+    archiveEmptySub: "Текущая игра сохранится здесь, когда вы начнёте \"Новую игру\".",
+    archiveClear: "🗑 Очистить всю историю", archiveClearConfirm: "Вы уверены, что хотите удалить всю историю игр?",
+    archiveNotFinished: "Не завершено", archiveFinalResult: "Итоговый результат:", archivePlayersCount: "{n} игроков",
+    archiveRoundsCount: "{n} раундов", chartEmpty: "Раунды ещё не введены.", chartEmptySub: "Введите хотя бы один раунд, чтобы увидеть график."
+  },
+  en: {
+    statsTitle: "Stats", leaderboardTitle: "Leaderboard", archiveTitle: "Game history",
+    chartTitle: "Score chart", themeTitle: "Theme", settingsTitle: "Settings",
+    settingsModalTitle: "Players", avatarPickerTitle: "Choose avatar",
+    voiceInputLabel: "Voice input", voiceListening: "Listening... (tap to stop)",
+    languageLabel: "Language", soundLabel: "Sound & Vibration", editNamesLabel: "Edit names",
+    newPlayerPlaceholder: "New player...", addBtn: "Add", saveBtn: "Save",
+    settingsWarning: "Game in progress! To remove a player, start a \"New game\" first.",
+    sectionPlayers: "Players", sectionBlocked: "Absent players",
+    emptyAllOut: "All players are out or blocked.", emptyAllOutSub: "Start a new game.",
+    winnerLabel: "Winner!", gameOverLabel: "Game over", allOutLabel: "All players are out",
+    chipOut: "Out", chipBlocked: "Absent", tapAvatarToReturn: "Tap the avatar to bring them back",
+    saveRoundBtn: "Save round {n}", undoBtn: "Undo", newGameBtn: "New game",
+    confirmResetText: "All results and blocks will be deleted. Are you sure?",
+    yesBtn: "Yes", noBtn: "No", roundHistory: "Round history ({n})", resetNote: "↺ — hit 107, reset to 0",
+    roundLabel: "Round {n}", editRoundTitle: "Edit round {n}", cantDeleteDuringGame: "Can't delete during a game",
+    dealerLabel: "Dealer", dealerNext: "next: {name}",
+    toastReturned: "{name} is back in the game! 🎉", toastBlocked: "{name} marked as absent 🚫",
+    toastEliminated: "{names} is out of the game! 💀", toastReset: "{names} dropped 107→0! 🎲",
+    toastUndone: "Last round undone", toastNewGame: "New game started! 🃏",
+    toastRoundUpdated: "Round {n} updated!", toastStatsCleared: "Stats cleared 🗑",
+    toastArchiveCleared: "History cleared 🗑", toastNoVoiceSupport: "Your browser doesn't support voice input",
+    toastNotUnderstood: 'Not understood: "{text}"', toastPlayerInactive: "{name} is not active",
+    toastMicDenied: "Microphone access denied", toastDangerZone: "{name} is in the danger zone! ({total}/108) ⚠️",
+    toastLangChanged: "Language changed 🌐", statsWins: "Wins (Top 5)", statsResets: "107→0 resets",
+    statsOuts: "Eliminated", noData: "No data", clearStats: "🗑 Clear stats",
+    clearStatsConfirm: "All stats (wins, resets, eliminations) will be permanently deleted. Are you sure?",
+    lbEmpty: "No games finished yet.", lbEmptySub: "Finish at least one game via \"New game\" to build a leaderboard.",
+    lbGames: "games", lbWins: "wins", archiveEmpty: "No archived games yet.",
+    archiveEmptySub: "Your current game will be saved here once you start a \"New game\".",
+    archiveClear: "🗑 Clear all history", archiveClearConfirm: "Are you sure you want to delete all game history?",
+    archiveNotFinished: "Unfinished", archiveFinalResult: "Final result:", archivePlayersCount: "{n} players",
+    archiveRoundsCount: "{n} rounds", chartEmpty: "No rounds entered yet.", chartEmptySub: "Enter at least one round to see the chart."
+  }
+};
+
+function t(key, params){
+  var dict = I18N[CURRENT_LANG] || I18N.uz;
+  var str = (dict[key] !== undefined) ? dict[key] : (I18N.uz[key] !== undefined ? I18N.uz[key] : key);
+  if(params){
+    for(var k in params){ str = str.split("{" + k + "}").join(params[k]); }
+  }
+  return str;
+}
+
+function applyStaticI18n(){
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    el.textContent = t(el.getAttribute("data-i18n"));
+  });
+  document.querySelectorAll("[data-i18n-title]").forEach(function(el){
+    el.title = t(el.getAttribute("data-i18n-title"));
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(function(el){
+    el.placeholder = t(el.getAttribute("data-i18n-placeholder"));
+  });
+  document.querySelectorAll(".lang-btn").forEach(function(b){
+    b.classList.toggle("active", b.getAttribute("data-lang") === CURRENT_LANG);
+  });
+}
+
+function setLang(lang){
+  if(!I18N[lang]) return;
+  CURRENT_LANG = lang;
+  localStorage.setItem("qarta108-lang", lang);
+  applyStaticI18n();
+  render();
+  showToast(t("toastLangChanged"), "🌐");
+}
+
+var state = { rounds: [], blocked: {}, players: [], sounds: true, roundStartedAt: null, dealerId: null };
 var confirmingReset = false;
 var roundSigns = {}; /* per-player +1/-1 for the score input currently being entered */
 
@@ -1151,6 +1517,12 @@ var SoundManager = {
     this.playTone(400, "square", 0.2, 0.1, 0);
     this.playTone(500, "square", 0.2, 0.1, 0.2);
     this.playTone(600, "square", 0.5, 0.1, 0.4);
+  },
+  playDanger: function(){
+    this.init();
+    if(navigator.vibrate) navigator.vibrate([80, 60, 80, 60, 120]);
+    this.playTone(880, "sine", 0.15, 0.09, 0);
+    this.playTone(880, "sine", 0.15, 0.09, 0.22);
   }
 };
 
@@ -1163,14 +1535,55 @@ function loadState(){
       if(!s.blocked) s.blocked = {};
       if(typeof s.sounds === "undefined") s.sounds = true;
       if(!s.players || s.players.length === 0) s.players = JSON.parse(JSON.stringify(DEFAULT_PLAYERS));
+      if(!s.roundStartedAt) s.roundStartedAt = Date.now();
+      if(!s.dealerId || !s.players.find(function(p){ return p.id === s.dealerId; })){
+        s.dealerId = s.players.length ? s.players[0].id : null;
+      }
       return s;
     }
   } catch(e){}
-  return { rounds: [], blocked: {}, players: JSON.parse(JSON.stringify(DEFAULT_PLAYERS)), sounds: true };
+  return { rounds: [], blocked: {}, players: JSON.parse(JSON.stringify(DEFAULT_PLAYERS)), sounds: true, roundStartedAt: Date.now(), dealerId: DEFAULT_PLAYERS[0].id };
 }
 
 function saveState(){
   try { localStorage.setItem(STORAGE, JSON.stringify(state)); } catch(e){}
+}
+
+/* ===== ARCHIVE (multi-game history) ===== */
+function loadArchive(){
+  try {
+    var raw = localStorage.getItem(ARCHIVE_STORAGE);
+    if(raw) return JSON.parse(raw);
+  } catch(e){}
+  return [];
+}
+function saveArchive(a){
+  try { localStorage.setItem(ARCHIVE_STORAGE, JSON.stringify(a)); } catch(e){}
+}
+function archiveCurrentGame(){
+  if(state.rounds.length === 0) return;
+  var standings = computeStandings();
+  var winner = standings.find(function(s){ return !s.eliminatedAt && !s.blocked; });
+  var activeRemaining = standings.filter(function(s){ return !s.eliminatedAt && !s.blocked; });
+  var winnerId = activeRemaining.length === 1 ? activeRemaining[0].id : null;
+  var winnerName = activeRemaining.length === 1 ? activeRemaining[0].name : null;
+
+  var entry = {
+    id: "g" + Date.now(),
+    date: Date.now(),
+    players: state.players.map(function(p){ return {id:p.id, name:p.name, initials:p.initials}; }),
+    rounds: JSON.parse(JSON.stringify(state.rounds)),
+    finalStandings: standings.map(function(s){
+      return { id:s.id, name:s.name, total:s.total, eliminatedAt:s.eliminatedAt, blocked:s.blocked };
+    }),
+    winnerId: winnerId,
+    winnerName: winnerName
+  };
+
+  var archive = loadArchive();
+  archive.unshift(entry);
+  if(archive.length > 100) archive = archive.slice(0, 100);
+  saveArchive(archive);
 }
 
 /* ===== STANDINGS ===== */
@@ -1246,6 +1659,8 @@ function showToast(msg, emoji, duration){
 var app       = document.getElementById("app");
 var roundBadge= document.getElementById("round-badge");
 
+var lastCelebratedKey = null;
+
 function render(){
   var standings = computeStandings();
   var active = standings.filter(function(p){ return !p.eliminatedAt && !p.blocked; });
@@ -1253,7 +1668,7 @@ function render(){
   var out    = standings.filter(function(p){ return !!p.eliminatedAt; });
   var gameOver = active.length <= 1 && state.rounds.length > 0;
 
-  roundBadge.textContent = (state.rounds.length + 1) + "-davr";
+  roundBadge.textContent = t("roundLabel", {n: state.rounds.length + 1});
 
   var html = "";
 
@@ -1262,14 +1677,20 @@ function render(){
     html += '<div class="winner-banner">';
     html += '<div class="winner-trophy">🏆</div>';
     html += '<div class="winner-info">';
-    html += '<div class="winner-label">🎉 G\'olib!</div>';
+    html += '<div class="winner-label">🎉 ' + t("winnerLabel") + '</div>';
     html += '<div class="winner-name">' + active[0].name + '</div>';
     html += '</div></div>';
+
+    var key = active[0].id + ":" + state.rounds.length;
+    if(lastCelebratedKey !== key){
+      lastCelebratedKey = key;
+      launchConfetti();
+    }
   } else if(gameOver && active.length === 0){
     html += '<div class="winner-banner" style="background:rgba(255,255,255,0.05);border-color:var(--border)">';
     html += '<div class="winner-trophy">🤝</div>';
-    html += '<div class="winner-info"><div class="winner-label">O\'yin tugadi</div>';
-    html += '<div class="winner-name" style="font-size:16px">Barcha o\'yinchilar chiqib ketdi</div>';
+    html += '<div class="winner-info"><div class="winner-label">' + t("gameOverLabel") + '</div>';
+    html += '<div class="winner-name" style="font-size:16px">' + t("allOutLabel") + '</div>';
     html += '</div></div>';
   }
 
@@ -1278,15 +1699,20 @@ function render(){
   var outList    = standings.filter(function(p){ return !!p.eliminatedAt; });
   var blockedList= standings.filter(function(p){ return p.blocked && !p.eliminatedAt; });
 
+  function avatarContent(p){
+    var pl = state.players.find(function(x){ return x.id === p.id; });
+    return (pl && pl.avatar) ? pl.avatar : p.initials;
+  }
+
   if(activeList.length === 0 && blockedList.length === 0){
-    html += '<div class="empty-state"><div class="emoji">🃏</div><p>Barcha o\'yinchilar chiqib ketdi yoki blok qilingan.<br>Yangi o\'yin boshlang.</p></div>';
+    html += '<div class="empty-state"><div class="emoji">🃏</div><p>' + t("emptyAllOut") + '<br>' + t("emptyAllOutSub") + '</p></div>';
   } else {
-    html += '<div class="section-label">O\'yinchilar</div>';
+    html += '<div class="section-label">' + t("sectionPlayers") + '</div>';
     html += '<div class="players-list" id="players-list">';
 
     /* Active + out (non-blocked) players */
     var mainList = activeList.concat(outList);
-    var maxActiveScore = activeList.length > 0 ? Math.max.apply(null, activeList.map(function(p){ return p.total; })) : 0;
+    var dealerPlayer = getDealerPlayer(standings);
 
     mainList.forEach(function(p, rankIdx){
       var cls   = statusClass(p.total, p.eliminatedAt, p.blocked);
@@ -1294,7 +1720,7 @@ function render(){
       var scoreClass = p.eliminatedAt ? "score-out" : (cls === "danger" ? "score-danger" : cls === "warn" ? "score-warn" : p.total <= 0 ? "score-zero" : "score-active");
       var justReset = !p.eliminatedAt && state.rounds.length > 0 && p.resets[state.rounds.length];
       var isLeader  = !p.eliminatedAt && activeList.length > 0 && p.id === activeList[0].id && activeList.length > 1;
-      var isDealer  = !p.eliminatedAt && state.rounds.length > 0 && activeList.length > 1 && p.total === maxActiveScore;
+      var isDealer  = !p.eliminatedAt && !gameOver && dealerPlayer && p.id === dealerPlayer.id;
 
       html += '<div class="player-card status-' + cls + '" id="card-' + p.id + '">';
       html += '<div class="card-main">';
@@ -1303,7 +1729,7 @@ function render(){
       if(!p.eliminatedAt){
         html += '<div class="block-btn" data-id="' + p.id + '">';
         html += '<div class="avatar status-' + cls + '">';
-        html += p.initials;
+        html += avatarContent(p);
         if(isLeader && !gameOver){ html += '<div class="rank-badge">1</div>'; }
         html += '</div>';
         html += '<span class="block-btn-hint">🚫 Blok</span>';
@@ -1311,7 +1737,7 @@ function render(){
       } else {
         /* Eliminated: non-clickable avatar */
         html += '<div style="flex-shrink:0">';
-        html += '<div class="avatar status-' + cls + '">' + p.initials + '</div>';
+        html += '<div class="avatar status-' + cls + '">' + avatarContent(p) + '</div>';
         html += '</div>';
       }
 
@@ -1322,7 +1748,7 @@ function render(){
 
       /* Badges */
       if(p.eliminatedAt){
-        html += '<span class="chip chip-out">Chiqdi</span>';
+        html += '<span class="chip chip-out">' + t("chipOut") + '</span>';
       }
       if(justReset){
         html += '<span class="chip chip-reset">107→0</span>';
@@ -1330,8 +1756,8 @@ function render(){
       if(isLeader && !gameOver){
         html += '<span class="chip chip-leader">🥇</span>';
       }
-      if(isDealer && !gameOver){
-        html += '<span class="chip" style="background:var(--purple);color:#fff;">🃏</span>';
+      if(isDealer){
+        html += '<span class="chip" style="background:var(--purple);color:#fff;" title="' + t("dealerLabel") + '">🃏</span>';
       }
 
       html += '</div>'; // player-top
@@ -1367,22 +1793,22 @@ function render(){
   /* Blocked players section */
   if(blockedList.length > 0){
     html += '<div class="blocked-section">';
-    html += '<div class="section-label"><span class="blocked-dot"></span> Kelmagan o\'yinchilar <span style="color:var(--text-tertiary);font-weight:400">(' + blockedList.length + ')</span></div>';
+    html += '<div class="section-label"><span class="blocked-dot"></span> ' + t("sectionBlocked") + ' <span style="color:var(--text-tertiary);font-weight:400">(' + blockedList.length + ')</span></div>';
     html += '<div class="blocked-players-list">';
     blockedList.forEach(function(p){
       html += '<div class="player-card blocked" id="card-' + p.id + '">';
       html += '<div class="card-main">';
       /* Blocked avatar — clicking it un-blocks */
       html += '<div class="block-btn" data-id="' + p.id + '">';
-      html += '<div class="avatar blocked">' + p.initials + '</div>';
+      html += '<div class="avatar blocked">' + avatarContent(p) + '</div>';
       html += '<span class="block-btn-hint">✅ Qayt</span>';
       html += '</div>';
       html += '<div class="player-info">';
       html += '<div class="player-top">';
       html += '<span class="player-name">' + p.name + '</span>';
-      html += '<span class="chip chip-blocked">🚫 Kelmadi</span>';
+      html += '<span class="chip chip-blocked">🚫 ' + t("chipBlocked") + '</span>';
       html += '</div>';
-      html += '<div style="font-size:11px;color:var(--text-tertiary);margin-top:4px">Avatarni bosib qaytaring</div>';
+      html += '<div style="font-size:11px;color:var(--text-tertiary);margin-top:4px">' + t("tapAvatarToReturn") + '</div>';
       html += '</div>';
       html += '<div style="font-size:18px;font-weight:800;color:rgba(255,255,255,0.2);font-variant-numeric:tabular-nums">' + p.total + '</div>';
       html += '</div>'; // card-main
@@ -1396,7 +1822,7 @@ function render(){
   if(!gameOver && activeList.length > 0){
     html += '<button class="add-round-btn" id="add-round-btn">';
     html += '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>';
-    html += (state.rounds.length + 1) + '-davrni saqlash';
+    html += t("saveRoundBtn", {n: state.rounds.length + 1});
     html += '</button>';
   }
 
@@ -1405,7 +1831,7 @@ function render(){
   if(state.rounds.length > 0){
     html += '<button class="ctrl-btn" id="undo-btn">';
     html += '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v6h6"/><path d="M3 13a9 9 0 1 0 3-7"/></svg>';
-    html += 'Bekor qilish';
+    html += t("undoBtn");
     html += '</button>';
   } else {
     html += '<div></div>';
@@ -1414,16 +1840,16 @@ function render(){
   if(!confirmingReset){
     html += '<button class="ctrl-btn danger" id="reset-btn">';
     html += '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg>';
-    html += 'Yangi o\'yin';
+    html += t("newGameBtn");
     html += '</button>';
     html += '</div>'; // controls
   } else {
     html += '</div>'; // controls
     html += '<div class="confirm-reset">';
-    html += '<span>Barcha natijalar va bloklar o\'chiriladi. Ishonchingiz komilmi?</span>';
+    html += '<span>' + t("confirmResetText") + '</span>';
     html += '<div class="confirm-actions">';
-    html += '<button class="confirm-yes" id="reset-yes">Ha</button>';
-    html += '<button class="confirm-no" id="reset-no">Yo\'q</button>';
+    html += '<button class="confirm-yes" id="reset-yes">' + t("yesBtn") + '</button>';
+    html += '<button class="confirm-no" id="reset-no">' + t("noBtn") + '</button>';
     html += '</div>';
     html += '</div>';
   }
@@ -1436,14 +1862,14 @@ function render(){
     html += '<details class="history">';
     html += '<summary>';
     html += '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>';
-    html += 'Davr tarixi (' + state.rounds.length + ')';
+    html += t("roundHistory", {n: state.rounds.length});
     html += '<svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>';
     html += '</summary>';
     html += '<div class="hist-wrap"><table class="hist"><thead><tr><th>#</th>';
     state.players.forEach(function(p){ html += '<th>' + p.name.slice(0,3) + '</th>'; });
     html += '</tr></thead><tbody>';
     state.rounds.forEach(function(r, idx){
-      html += '<tr><td style="cursor:pointer; color:var(--gold); text-decoration:underline;" class="edit-round-trigger" data-idx="' + idx + '" title="Davrni tahrirlash">' + (idx+1) + ' ✏️</td>';
+      html += '<tr><td style="cursor:pointer; color:var(--gold); text-decoration:underline;" class="edit-round-trigger" data-idx="' + idx + '">' + (idx+1) + ' ✏️</td>';
       state.players.forEach(function(p){
         var v = r.scores[p.id];
         var dropped = resetsByPlayer[p.id] && resetsByPlayer[p.id][idx+1];
@@ -1454,12 +1880,67 @@ function render(){
       html += '</tr>';
     });
     html += '</tbody></table></div>';
-    html += '<p style="font-size:10px;color:var(--text-tertiary);margin:6px 4px">↺ — 107 ball bo\'lib 0 ga tushdi</p>';
+    html += '<p style="font-size:10px;color:var(--text-tertiary);margin:6px 4px">' + t("resetNote") + '</p>';
     html += '</details>';
   }
 
   app.innerHTML = html;
   attachHandlers(activeList);
+  renderDealerBadge();
+}
+
+/* ===== CONFETTI ===== */
+function launchConfetti(){
+  var count = 70;
+  for(var i = 0; i < count; i++){
+    (function(i){
+      var el = document.createElement("div");
+      el.className = "confetti-piece";
+      var color = CHART_COLORS[i % CHART_COLORS.length];
+      var duration = 2 + Math.random() * 1.4;
+      var delay = Math.random() * 0.4;
+      var drift = (Math.random() * 140 - 70) + "px";
+      var spin = ((Math.random() > 0.5 ? 1 : -1) * (360 + Math.random() * 540)) + "deg";
+      el.style.left = (Math.random() * 100) + "vw";
+      el.style.background = color;
+      el.style.animationDuration = duration + "s";
+      el.style.animationDelay = delay + "s";
+      el.style.setProperty("--drift", drift);
+      el.style.setProperty("--spin", spin);
+      if(Math.random() > 0.5) el.style.borderRadius = "50%";
+      document.body.appendChild(el);
+      setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, (duration + delay) * 1000 + 300);
+    })(i);
+  }
+}
+
+/* ===== DEALER / TURN INDICATOR ===== */
+/* Dealer = the active player currently with the highest score.
+   Ties are broken by seating order (state.players order). No manual rotation. */
+function getDealerPlayer(standings){
+  standings = standings || computeStandings();
+  var activeOnly = standings.filter(function(s){ return !s.eliminatedAt && !s.blocked; });
+  if(activeOnly.length < 2) return null;
+
+  var map = {};
+  activeOnly.forEach(function(s){ map[s.id] = s; });
+  var ordered = state.players
+    .map(function(p){ return map[p.id]; })
+    .filter(Boolean);
+
+  var best = ordered[0];
+  ordered.forEach(function(s){ if(s.total > best.total) best = s; });
+  return best;
+}
+
+function renderDealerBadge(){
+  var slot = document.getElementById("dealer-badge-slot");
+  if(!slot) return;
+  var standings = computeStandings();
+  var dealer = getDealerPlayer(standings);
+  if(!dealer){ slot.innerHTML = ""; return; }
+
+  slot.innerHTML = '<div class="dealer-badge">🃏 ' + t("dealerLabel") + ': ' + dealer.name + '</div>';
 }
 
 /* ===== HANDLERS ===== */
@@ -1491,10 +1972,10 @@ function attachHandlers(activeList){
 
       if(state.blocked[pid]){
         delete state.blocked[pid];
-        showToast(player.name + " o'yinga qaytarildi! 🎉", "✅");
+        showToast(t("toastReturned", {name: player.name}), "✅");
       } else {
         state.blocked[pid] = true;
-        showToast(player.name + " kelmadi deb belgilandi 🚫", "🚫");
+        showToast(t("toastBlocked", {name: player.name}), "🚫");
       }
       saveState();
       render();
@@ -1516,29 +1997,42 @@ function attachHandlers(activeList){
     });
     roundSigns = {}; /* reset +/- toggles for the next round */
 
-    /* Check 108 warnings */
+    /* Check 108 warnings + danger zone crossing (>=92%) */
     var willEliminate = [];
     var willReset = [];
+    var willEnterDanger = [];
     activeList.forEach(function(p){
       var s = computeStandings().find(function(x){ return x.id === p.id; });
       if(!s) return;
       var newTotal = s.total + (scores[p.id] || 0);
+      var wasDanger = (s.total / LIMIT) >= 0.92;
+      var willBeDanger = (newTotal / LIMIT) >= 0.92 && newTotal < LIMIT && newTotal !== RESET_AT;
       if(newTotal === RESET_AT) willReset.push(p.name);
       else if(newTotal >= LIMIT) willEliminate.push(p.name);
+      else if(willBeDanger && !wasDanger) willEnterDanger.push({name: p.name, total: newTotal});
     });
 
-    state.rounds.push({scores: scores});
+    var durationMs = state.roundStartedAt ? (Date.now() - state.roundStartedAt) : null;
+    state.rounds.push({scores: scores, duration: durationMs});
+    state.roundStartedAt = Date.now();
     saveState();
     confirmingReset = false;
 
     if(willEliminate.length > 0){
       SoundManager.playSad();
-      showToast(willEliminate.join(", ") + " o\'yindan chiqdi! 💀", "❌", 3000);
+      showToast(t("toastEliminated", {names: willEliminate.join(", ")}), "❌", 3000);
     } else if(willReset.length > 0){
       SoundManager.playMagic();
-      showToast(willReset.join(", ") + " 107→0 ga tushdi! 🎲", "🔄", 3000);
+      showToast(t("toastReset", {names: willReset.join(", ")}), "🔄", 3000);
+    } else if(willEnterDanger.length > 0){
+      SoundManager.playDanger();
+      willEnterDanger.forEach(function(d, i){
+        setTimeout(function(){
+          showToast(t("toastDangerZone", {name: d.name, total: d.total}), "⚠️", 3000);
+        }, i * 300);
+      });
     }
-    
+
     /* Check for winner after elimination */
     var remaining = computeStandings().filter(function(x){ return !x.eliminatedAt && !x.blocked; });
     if(remaining.length === 1 && willEliminate.length > 0){
@@ -1553,7 +2047,7 @@ function attachHandlers(activeList){
   if(undoBtn) undoBtn.addEventListener("click", function(){
     state.rounds.pop();
     saveState();
-    showToast("Oxirgi davr bekor qilindi", "↩️");
+    showToast(t("toastUndone"), "↩️");
     render();
   });
 
@@ -1568,12 +2062,15 @@ function attachHandlers(activeList){
   if(yes) yes.addEventListener("click", function(){
     if(state.rounds.length > 0){
       recordGameStats();
+      archiveCurrentGame();
     }
     state.rounds  = [];
     state.blocked = {};
+    state.roundStartedAt = Date.now();
+    state.dealerId = state.players.length ? state.players[0].id : null;
     confirmingReset = false;
     saveState();
-    showToast("Yangi o'yin boshlandi! 🃏", "🎮");
+    showToast(t("toastNewGame"), "🎮");
     render();
   });
 
@@ -1594,6 +2091,13 @@ function attachSettings(){
   var newNameIn = document.getElementById("new-player-name");
   var warning = document.getElementById("settings-warning");
   var soundToggle = document.getElementById("sounds-toggle");
+  var langBtns = document.querySelectorAll("#lang-switcher .lang-btn");
+
+  langBtns.forEach(function(b){
+    b.addEventListener("click", function(){
+      setLang(b.getAttribute("data-lang"));
+    });
+  });
 
   soundToggle.checked = state.sounds;
   soundToggle.addEventListener("change", function(e){
@@ -1612,15 +2116,24 @@ function attachSettings(){
     var html = "";
     state.players.forEach(function(p){
       html += '<div class="settings-player-item">';
+      html += '<button type="button" class="avatar-preview-btn" data-avatar-pid="' + p.id + '">' + (p.avatar || p.initials) + '</button>';
       html += '<input type="text" value="' + p.name + '" data-pid="' + p.id + '">';
       if(isGameActive){
-        html += '<button disabled title="O\'yin vaqtida o\'chirib bo\'lmaydi">🗑</button>';
+        html += '<button disabled title="' + t("cantDeleteDuringGame") + '">🗑</button>';
       } else {
         html += '<button class="del-player-btn" data-pid="' + p.id + '">🗑</button>';
       }
       html += '</div>';
     });
     listEl.innerHTML = html;
+
+    /* Bind avatar picker */
+    var avatarBtns = listEl.querySelectorAll(".avatar-preview-btn");
+    avatarBtns.forEach(function(b){
+      b.addEventListener("click", function(){
+        openAvatarPicker(b.getAttribute("data-avatar-pid"));
+      });
+    });
 
     /* Bind edits */
     var inputs = listEl.querySelectorAll("input");
@@ -1667,14 +2180,52 @@ function attachSettings(){
     state.players.push({
       id: newId,
       name: name,
-      initials: name.slice(0,2).toUpperCase()
+      initials: name.slice(0,2).toUpperCase(),
+      avatar: null
     });
     newNameIn.value = "";
     saveState();
     renderSettings();
     render();
   });
+
+  /* Expose so avatar picker modal can refresh this list after a pick */
+  window.__refreshSettingsList = renderSettings;
 }
+
+/* ===== AVATAR PICKER MODAL ===== */
+function openAvatarPicker(pid){
+  var modal = document.getElementById("avatar-picker-modal");
+  var grid = document.getElementById("avatar-picker-grid");
+  var player = state.players.find(function(p){ return p.id === pid; });
+  if(!player) return;
+
+  var html = "";
+  html += '<button type="button" class="avatar-choice" data-choice="__initials__" style="font-size:13px;font-weight:700;">' + player.initials + '</button>';
+  AVATAR_OPTIONS.forEach(function(emoji){
+    var sel = player.avatar === emoji ? " selected" : "";
+    html += '<button type="button" class="avatar-choice' + sel + '" data-choice="' + emoji + '">' + emoji + '</button>';
+  });
+  grid.innerHTML = html;
+
+  grid.querySelectorAll(".avatar-choice").forEach(function(b){
+    b.addEventListener("click", function(){
+      var choice = b.getAttribute("data-choice");
+      player.avatar = (choice === "__initials__") ? null : choice;
+      saveState();
+      render();
+      if(window.__refreshSettingsList) window.__refreshSettingsList();
+      modal.classList.remove("open");
+    });
+  });
+
+  modal.classList.add("open");
+}
+(function attachAvatarPickerClose(){
+  var closeBtn = document.getElementById("avatar-picker-close");
+  var modal = document.getElementById("avatar-picker-modal");
+  if(closeBtn) closeBtn.addEventListener("click", function(){ modal.classList.remove("open"); });
+})();
 
 /* ===== INSTALL TIP ===== */
 function setupInstallTip(){
@@ -1720,7 +2271,7 @@ function attachEditRound(){
     if(isNaN(currentEditIdx)) return;
     
     var r = state.rounds[currentEditIdx];
-    title.textContent = (currentEditIdx + 1) + "-davrni Tahrirlash";
+    title.textContent = t("editRoundTitle", {n: currentEditIdx + 1});
     
     var html = "";
     edrSigns = {};
@@ -1767,7 +2318,7 @@ function attachEditRound(){
     saveState();
     modal.classList.remove("open");
     render();
-    showToast((currentEditIdx+1) + "-davr yangilandi!", "✅");
+    showToast(t("toastRoundUpdated", {n: currentEditIdx + 1}), "✅");
   });
 }
 
@@ -1794,7 +2345,7 @@ function attachStats(){
       }
       arr.sort(function(a,b){ return b.val - a.val; });
       if(arr.length === 0){
-        res += '<div style="font-size:13px; color:var(--text-tertiary);">Ma\'lumot yo\'q</div>';
+        res += '<div style="font-size:13px; color:var(--text-tertiary);">' + t("noData") + '</div>';
       } else {
         arr.slice(0,5).forEach(function(item){
           res += '<div style="display:flex; justify-content:space-between; background:var(--surface-1); padding:8px 12px; border-radius:8px; margin-bottom:4px;">';
@@ -1807,21 +2358,21 @@ function attachStats(){
       return res;
     }
 
-    html += makeList("G'alabalar (Top 5)", g.wins, "🏆");
-    html += makeList("107 qilib 0 ga tushganlar", g.resets, "🔄");
-    html += makeList("O'yindan chiqqanlar", g.outs, "💀");
+    html += makeList(t("statsWins"), g.wins, "🏆");
+    html += makeList(t("statsResets"), g.resets, "🔄");
+    html += makeList(t("statsOuts"), g.outs, "💀");
 
     /* Clear stats control */
     if(!confirmingStatsReset){
       html += '<button id="stats-clear-btn" class="ctrl-btn danger" style="width:100%; margin-top:4px;">';
-      html += '🗑 Statistikani tozalash';
+      html += t("clearStats");
       html += '</button>';
     } else {
       html += '<div class="confirm-reset">';
-      html += '<span>Barcha statistika (g\'alabalar, resetlar, chiqishlar) butunlay o\'chiriladi. Ishonchingiz komilmi?</span>';
+      html += '<span>' + t("clearStatsConfirm") + '</span>';
       html += '<div class="confirm-actions">';
-      html += '<button class="confirm-yes" id="stats-clear-yes">Ha</button>';
-      html += '<button class="confirm-no" id="stats-clear-no">Yo\'q</button>';
+      html += '<button class="confirm-yes" id="stats-clear-yes">' + t("yesBtn") + '</button>';
+      html += '<button class="confirm-no" id="stats-clear-no">' + t("noBtn") + '</button>';
       html += '</div>';
       html += '</div>';
     }
@@ -1841,7 +2392,7 @@ function attachStats(){
       saveGlobalStats({ wins: {}, resets: {}, outs: {} });
       confirmingStatsReset = false;
       renderStatsBody();
-      showToast("Statistika tozalandi 🗑", "✅");
+      showToast(t("toastStatsCleared"), "✅");
     });
 
     var noBtn = document.getElementById("stats-clear-no");
@@ -1858,6 +2409,379 @@ function attachStats(){
   });
 
   closeBtn.addEventListener("click", function(){ modal.classList.remove("open"); });
+}
+
+/* ===== ROUND TIMER ===== */
+function fmtDuration(ms){
+  if(ms === null || ms === undefined || isNaN(ms) || ms < 0) return "00:00";
+  var totalSec = Math.floor(ms / 1000);
+  var m = Math.floor(totalSec / 60);
+  var s = totalSec % 60;
+  var mm = (m < 10 ? "0" : "") + m;
+  var ss = (s < 10 ? "0" : "") + s;
+  if(m >= 60){
+    var h = Math.floor(m / 60);
+    var mrem = m % 60;
+    return h + ":" + (mrem < 10 ? "0" : "") + mrem + ":" + ss;
+  }
+  return mm + ":" + ss;
+}
+function tickRoundTimer(){
+  var el = document.getElementById("round-timer");
+  if(!el || !state.roundStartedAt) return;
+  el.textContent = "⏱ " + fmtDuration(Date.now() - state.roundStartedAt);
+}
+
+/* ===== LEADERBOARD ===== */
+function computeLeaderboard(){
+  var archive = loadArchive();
+  var stats = {};
+  archive.forEach(function(game){
+    (game.finalStandings || []).forEach(function(fs){
+      if(!stats[fs.id]) stats[fs.id] = { name: fs.name, games: 0, wins: 0, scoreSum: 0 };
+      stats[fs.id].games++;
+      stats[fs.id].scoreSum += (fs.total || 0);
+      if(game.winnerId === fs.id) stats[fs.id].wins++;
+    });
+  });
+  var arr = [];
+  for(var pid in stats){
+    var s = stats[pid];
+    arr.push({
+      id: pid, name: s.name, games: s.games, wins: s.wins,
+      winRate: s.games ? Math.round((s.wins / s.games) * 100) : 0,
+      avgScore: s.games ? Math.round(s.scoreSum / s.games) : 0
+    });
+  }
+  arr.sort(function(a,b){
+    if(b.wins !== a.wins) return b.wins - a.wins;
+    if(b.winRate !== a.winRate) return b.winRate - a.winRate;
+    return b.games - a.games;
+  });
+  return arr;
+}
+
+function attachLeaderboard(){
+  var btn = document.getElementById("leaderboard-btn");
+  var modal = document.getElementById("leaderboard-modal");
+  var closeBtn = document.getElementById("leaderboard-close");
+  var body = document.getElementById("leaderboard-body");
+
+  function renderBody(){
+    var arr = computeLeaderboard();
+    var html = "";
+    if(arr.length === 0){
+      html += '<div class="empty-state"><div class="emoji">🏆</div><p>' + t("lbEmpty") + '<br>' + t("lbEmptySub") + '</p></div>';
+    } else {
+      var medals = ["🥇","🥈","🥉"];
+      arr.forEach(function(item, idx){
+        html += '<div class="lb-row">';
+        html += '<div class="lb-rank">' + (medals[idx] || (idx+1)) + '</div>';
+        html += '<div class="lb-name">' + item.name + '</div>';
+        html += '<div class="lb-stat">' + item.games + '<br><span style="font-size:9px;">' + t("lbGames") + '</span></div>';
+        html += '<div class="lb-stat"><b>' + item.wins + '</b><br><span style="font-size:9px;">' + t("lbWins") + '</span></div>';
+        html += '<div class="lb-stat"><b>' + item.winRate + '%</b><br><span style="font-size:9px;">win-rate</span></div>';
+        html += '</div>';
+      });
+    }
+    body.innerHTML = html;
+  }
+
+  btn.addEventListener("click", function(){
+    renderBody();
+    modal.classList.add("open");
+  });
+  closeBtn.addEventListener("click", function(){ modal.classList.remove("open"); });
+}
+
+/* ===== ARCHIVE MODAL ===== */
+function attachArchive(){
+  var btn = document.getElementById("archive-btn");
+  var modal = document.getElementById("archive-modal");
+  var closeBtn = document.getElementById("archive-close");
+  var body = document.getElementById("archive-body");
+  var openId = null;
+
+  function fmtDate(ts){
+    var d = new Date(ts);
+    var pad = function(n){ return (n < 10 ? "0" : "") + n; };
+    return pad(d.getDate()) + "." + pad(d.getMonth()+1) + "." + d.getFullYear() + " " + pad(d.getHours()) + ":" + pad(d.getMinutes());
+  }
+
+  function renderBody(){
+    var archive = loadArchive();
+    var html = "";
+    if(archive.length === 0){
+      html += '<div class="empty-state"><div class="emoji">🗂</div><p>' + t("archiveEmpty") + '<br>' + t("archiveEmptySub") + '</p></div>';
+    } else {
+      html += '<button id="archive-clear-btn" class="ctrl-btn danger" style="width:100%; margin-bottom:12px;">' + t("archiveClear") + '</button>';
+      archive.forEach(function(game){
+        var isOpen = openId === game.id;
+        html += '<div class="archive-item" data-id="' + game.id + '">';
+        html += '<div class="archive-item-top"><div>';
+        html += '<div class="archive-date">' + fmtDate(game.date) + '</div>';
+        html += '<div class="archive-winner">' + (game.winnerName ? "🏆 " + game.winnerName : t("archiveNotFinished")) + '</div>';
+        html += '<div class="archive-meta">' + t("archivePlayersCount", {n: game.players.length}) + " · " + t("archiveRoundsCount", {n: game.rounds.length}) + "</div>";
+        html += '</div>';
+        html += '<button class="archive-del-btn" data-del="' + game.id + '">✕</button>';
+        html += '</div>';
+        html += '<div class="archive-detail' + (isOpen ? ' open' : '') + '">';
+        if(isOpen){
+          html += '<div class="hist-wrap"><table class="hist"><thead><tr><th>#</th>';
+          game.players.forEach(function(p){ html += '<th>' + p.initials + '</th>'; });
+          html += '</tr></thead><tbody>';
+          game.rounds.forEach(function(r, ridx){
+            html += '<tr><td>' + (ridx+1) + '</td>';
+            game.players.forEach(function(p){
+              var v = r.scores[p.id];
+              html += '<td>' + (v === undefined || v === null ? '—' : (v > 0 ? '+' : '') + v) + '</td>';
+            });
+            html += '</tr>';
+          });
+          html += '</tbody></table></div>';
+          html += '<div style="margin-top:10px; font-size:12px; color:var(--text-secondary);">' + t("archiveFinalResult") + '</div>';
+          game.finalStandings.slice().sort(function(a,b){ return a.total - b.total; }).forEach(function(fs){
+            html += '<div style="display:flex; justify-content:space-between; padding:4px 0; font-size:12.5px;"><span>' + fs.name + (fs.id === game.winnerId ? ' 🏆' : '') + (fs.eliminatedAt ? ' 💀' : '') + '</span><span style="font-weight:700;">' + fs.total + '</span></div>';
+          });
+        }
+        html += '</div></div>';
+      });
+    }
+    body.innerHTML = html;
+
+    var clearBtn = document.getElementById("archive-clear-btn");
+    if(clearBtn) clearBtn.addEventListener("click", function(){
+      if(window.confirm(t("archiveClearConfirm"))){
+        saveArchive([]);
+        renderBody();
+        showToast(t("toastArchiveCleared"), "✅");
+      }
+    });
+
+    body.querySelectorAll(".archive-item").forEach(function(item){
+      item.addEventListener("click", function(e){
+        if(e.target.classList.contains("archive-del-btn")) return;
+        var id = item.getAttribute("data-id");
+        openId = (openId === id) ? null : id;
+        renderBody();
+      });
+    });
+    body.querySelectorAll(".archive-del-btn").forEach(function(delBtn){
+      delBtn.addEventListener("click", function(e){
+        e.stopPropagation();
+        var id = delBtn.getAttribute("data-del");
+        saveArchive(loadArchive().filter(function(g){ return g.id !== id; }));
+        if(openId === id) openId = null;
+        renderBody();
+      });
+    });
+  }
+
+  btn.addEventListener("click", function(){
+    openId = null;
+    renderBody();
+    modal.classList.add("open");
+  });
+  closeBtn.addEventListener("click", function(){ modal.classList.remove("open"); });
+}
+
+/* ===== CHART (score progression) ===== */
+function computeHistorySeries(){
+  var totals = {}; var eliminated = {}; var series = {};
+  state.players.forEach(function(p){ totals[p.id] = 0; series[p.id] = [{round:0, value:0}]; });
+
+  state.rounds.forEach(function(r, idx){
+    state.players.forEach(function(p){
+      if(eliminated[p.id]) return;
+      var v = r.scores[p.id];
+      if(v !== undefined && v !== null){
+        totals[p.id] += v;
+        if(totals[p.id] === RESET_AT){ totals[p.id] = 0; }
+        else if(totals[p.id] >= LIMIT){ eliminated[p.id] = idx+1; }
+        series[p.id].push({round: idx+1, value: totals[p.id], elim: !!eliminated[p.id]});
+      }
+    });
+  });
+  return series;
+}
+
+function buildChartSVG(){
+  var series = computeHistorySeries();
+  var maxRound = state.rounds.length;
+  var W = 380, H = 220, padL = 26, padR = 8, padT = 10, padB = 10;
+  var plotW = W - padL - padR, plotH = H - padT - padB;
+  var maxY = LIMIT;
+  function xPos(round){ return padL + (maxRound <= 0 ? 0 : (round / maxRound) * plotW); }
+  function yPos(val){ return padT + plotH - (val / maxY) * plotH; }
+
+  var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%; height:auto; display:block;">';
+  [0, 0.25, 0.5, 0.75, 1].forEach(function(f){
+    var gy = padT + plotH * (1 - f);
+    svg += '<line x1="' + padL + '" y1="' + gy + '" x2="' + (W - padR) + '" y2="' + gy + '" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>';
+    svg += '<text x="0" y="' + (gy + 3) + '" font-size="8" fill="rgba(255,255,255,0.4)">' + Math.round(maxY * f) + '</text>';
+  });
+
+  state.players.forEach(function(p, pidx){
+    var pts = series[p.id];
+    if(!pts || pts.length < 2) return;
+    var color = CHART_COLORS[pidx % CHART_COLORS.length];
+    var d = "";
+    pts.forEach(function(pt, i){
+      var xx = xPos(pt.round), yy = yPos(pt.value);
+      d += (i === 0 ? "M" : "L") + xx.toFixed(1) + "," + yy.toFixed(1) + " ";
+    });
+    svg += '<path d="' + d + '" fill="none" stroke="' + color + '" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
+    var last = pts[pts.length - 1];
+    svg += '<circle cx="' + xPos(last.round) + '" cy="' + yPos(last.value) + '" r="3.5" fill="' + color + '" stroke="var(--bg-mid,#141420)" stroke-width="1.5"/>';
+  });
+
+  svg += '</svg>';
+  return svg;
+}
+
+function attachChart(){
+  var btn = document.getElementById("chart-btn");
+  var modal = document.getElementById("chart-modal");
+  var closeBtn = document.getElementById("chart-close");
+  var body = document.getElementById("chart-body");
+
+  function renderBody(){
+    if(state.rounds.length === 0){
+      body.innerHTML = '<div class="empty-state"><div class="emoji">📈</div><p>' + t("chartEmpty") + '<br>' + t("chartEmptySub") + '</p></div>';
+      return;
+    }
+    var html = buildChartSVG();
+    html += '<div class="chart-legend">';
+    state.players.forEach(function(p, idx){
+      var color = CHART_COLORS[idx % CHART_COLORS.length];
+      html += '<div class="chart-legend-item"><span class="chart-legend-dot" style="background:' + color + '"></span>' + p.name + '</div>';
+    });
+    html += '</div>';
+    body.innerHTML = html;
+  }
+
+  btn.addEventListener("click", function(){
+    renderBody();
+    modal.classList.add("open");
+  });
+  closeBtn.addEventListener("click", function(){ modal.classList.remove("open"); });
+}
+
+/* ===== VOICE INPUT ===== */
+var NUM_ONES = { "nol":0,"bir":1,"bitta":1,"ikki":2,"uch":3,"to'rt":4,"tort":4,"besh":5,"olti":6,"yetti":7,"sakkiz":8,"to'qqiz":9,"toqqiz":9 };
+var NUM_TENS = { "o'n":10,"on":10,"yigirma":20,"o'ttiz":30,"ottiz":30,"qirq":40,"ellik":50,"oltmish":60,"yetmish":70,"sakson":80,"to'qson":90,"toqson":90 };
+
+function normalizeVoiceText(t){
+  return t.toLowerCase().replace(/[’‘`]/g, "'").replace(/[.,!?]/g, " ").trim();
+}
+function stripApostrophes(s){ return s.replace(/'/g, ""); }
+
+function wordsToNumber(words){
+  var total = 0, found = false, pendingHundredMult = null;
+  for(var i=0;i<words.length;i++){
+    var w = words[i];
+    if(/^\d+$/.test(w)){ return parseInt(w, 10); }
+    if(w === "yuz"){ total += (pendingHundredMult || 1) * 100; pendingHundredMult = null; found = true; continue; }
+    if(NUM_TENS.hasOwnProperty(w)){ total += NUM_TENS[w]; found = true; continue; }
+    if(NUM_ONES.hasOwnProperty(w)){
+      if(words[i+1] === "yuz"){ pendingHundredMult = NUM_ONES[w]; continue; }
+      total += NUM_ONES[w]; found = true; continue;
+    }
+  }
+  return found ? total : null;
+}
+
+function parseVoiceCommand(transcript){
+  var norm = normalizeVoiceText(transcript);
+  var isNegative = /\bminus\b|\bkamaytir|\bkamayish/.test(norm);
+  var flatNorm = stripApostrophes(norm);
+  var matchedPlayer = null;
+  state.players.forEach(function(p){
+    if(matchedPlayer) return;
+    var pname = stripApostrophes(p.name.toLowerCase());
+    if(pname.length >= 2 && flatNorm.indexOf(pname) !== -1) matchedPlayer = p;
+  });
+  var words = norm.split(/\s+/).filter(Boolean);
+  var number = wordsToNumber(words);
+  return { player: matchedPlayer, number: number, negative: isNegative };
+}
+
+function setupVoiceInput(){
+  var btn = document.getElementById("voice-btn");
+  var icon = document.getElementById("voice-btn-icon");
+  var label = document.getElementById("voice-btn-label");
+  var SpeechCtor = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if(!SpeechCtor){
+    btn.addEventListener("click", function(){
+      showToast(t("toastNoVoiceSupport"), "🚫");
+    });
+    return;
+  }
+
+  var recognition = new SpeechCtor();
+  recognition.lang = "uz-UZ";
+  recognition.continuous = true;
+  recognition.interimResults = false;
+  var listening = false;
+
+  function handleTranscript(transcript){
+    var parsed = parseVoiceCommand(transcript);
+    if(!parsed.player || parsed.number === null){
+      showToast(t("toastNotUnderstood", {text: transcript}), "❓");
+      return;
+    }
+    var inputEl = document.getElementById("in-" + parsed.player.id);
+    if(!inputEl){
+      showToast(t("toastPlayerInactive", {name: parsed.player.name}), "⚠️");
+      return;
+    }
+    inputEl.value = parsed.number;
+    roundSigns[parsed.player.id] = parsed.negative ? -1 : 1;
+    var signBtn = document.querySelector('.sign-toggle[data-id="' + parsed.player.id + '"]');
+    if(signBtn){
+      signBtn.classList.toggle("negative", parsed.negative);
+      signBtn.textContent = parsed.negative ? "−" : "+";
+    }
+    showToast(parsed.player.name + ": " + (parsed.negative ? "-" : "+") + parsed.number, "🎙️");
+    if(navigator.vibrate) navigator.vibrate(20);
+  }
+
+  recognition.onresult = function(event){
+    for(var i = event.resultIndex; i < event.results.length; i++){
+      if(!event.results[i].isFinal) continue;
+      handleTranscript(event.results[i][0].transcript);
+    }
+  };
+  recognition.onerror = function(e){
+    if(e.error === "no-speech") return;
+    if(e.error === "not-allowed" || e.error === "service-not-allowed"){
+      showToast(t("toastMicDenied"), "🚫");
+      stopListening();
+    }
+  };
+  recognition.onend = function(){
+    if(listening){ try { recognition.start(); } catch(e){} }
+  };
+
+  function startListening(){
+    try { recognition.start(); } catch(e){}
+    listening = true;
+    btn.classList.add("listening");
+    icon.textContent = "🔴";
+    label.textContent = t("voiceListening");
+  }
+  function stopListening(){
+    listening = false;
+    try { recognition.stop(); } catch(e){}
+    btn.classList.remove("listening");
+    icon.textContent = "🎙️";
+    label.textContent = t("voiceInputLabel");
+  }
+
+  btn.addEventListener("click", function(){
+    if(listening) stopListening(); else startListening();
+  });
 }
 
 /* ===== SETUP THEME ===== */
@@ -1880,11 +2804,18 @@ function setupTheme(){
 document.addEventListener("click", function(){ SoundManager.init(); }, {once:true});
 state = loadState();
 setupTheme();
+applyStaticI18n();
 render();
 attachSettings();
 attachEditRound();
 attachStats();
+attachLeaderboard();
+attachArchive();
+attachChart();
+setupVoiceInput();
 setupInstallTip();
+tickRoundTimer();
+setInterval(tickRoundTimer, 1000);
 
 if("serviceWorker" in navigator){
   window.addEventListener("load", function(){
