@@ -2671,6 +2671,34 @@ function attachChart(){
 var NUM_ONES = { "nol":0,"bir":1,"bitta":1,"ikki":2,"uch":3,"to'rt":4,"tort":4,"besh":5,"olti":6,"yetti":7,"sakkiz":8,"to'qqiz":9,"toqqiz":9 };
 var NUM_TENS = { "o'n":10,"on":10,"yigirma":20,"o'ttiz":30,"ottiz":30,"qirq":40,"ellik":50,"oltmish":60,"yetmish":70,"sakson":80,"to'qson":90,"toqson":90 };
 
+/* Uzbek Cyrillic → Latin map. Player names or the speech-recognized transcript
+   may come back in either script, so both sides are transliterated to a single
+   Latin form before comparing — this is why the mapping doesn't need to be
+   linguistically perfect, only consistent. */
+var CYR_TO_LAT_MAP = {
+  "а":"a","б":"b","в":"v","г":"g","д":"d","е":"e","ё":"yo","ж":"j","з":"z","и":"i","й":"y",
+  "к":"k","л":"l","м":"m","н":"n","о":"o","п":"p","р":"r","с":"s","т":"t","у":"u","ф":"f",
+  "х":"x","ц":"s","ч":"ch","ш":"sh","щ":"sh","ъ":"'","ы":"i","э":"e","ю":"yu","я":"ya",
+  "ў":"o'","қ":"q","ғ":"g'","ҳ":"h"
+};
+
+function transliterateToLatin(str){
+  var result = "";
+  for(var i = 0; i < str.length; i++){
+    var lower = str[i].toLowerCase();
+    result += CYR_TO_LAT_MAP.hasOwnProperty(lower) ? CYR_TO_LAT_MAP[lower] : lower;
+  }
+  return result;
+}
+
+/* For MATCHING purposes only (never for display): canonicalize letters that
+   commonly vary between transliteration conventions, e.g. "Ахмад" -> "Axmad"
+   strictly, but people often say/type "Ahmad". Treating x/h as equivalent
+   avoids false negatives without affecting how names are actually shown. */
+function toMatchKey(str){
+  return stripApostrophes(transliterateToLatin(str.toLowerCase())).replace(/x/g, "h");
+}
+
 function normalizeVoiceText(t){
   return t.toLowerCase().replace(/[’‘`]/g, "'").replace(/[.,!?]/g, " ").trim();
 }
@@ -2693,15 +2721,16 @@ function wordsToNumber(words){
 
 function parseVoiceCommand(transcript){
   var norm = normalizeVoiceText(transcript);
-  var isNegative = /\bminus\b|\bkamaytir|\bkamayish/.test(norm);
-  var flatNorm = stripApostrophes(norm);
+  var latinNorm = transliterateToLatin(norm); /* handles Cyrillic-script transcripts */
+  var isNegative = /\bminus\b|\bkamaytir|\bkamayish/.test(latinNorm);
+  var flatNorm = toMatchKey(norm);
   var matchedPlayer = null;
   state.players.forEach(function(p){
     if(matchedPlayer) return;
-    var pname = stripApostrophes(p.name.toLowerCase());
+    var pname = toMatchKey(p.name); /* handles Cyrillic-script names + x/h variants */
     if(pname.length >= 2 && flatNorm.indexOf(pname) !== -1) matchedPlayer = p;
   });
-  var words = norm.split(/\s+/).filter(Boolean);
+  var words = latinNorm.split(/\s+/).filter(Boolean);
   var number = wordsToNumber(words);
   return { player: matchedPlayer, number: number, negative: isNegative };
 }

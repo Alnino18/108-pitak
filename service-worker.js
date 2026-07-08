@@ -1,4 +1,4 @@
-const CACHE_NAME = "qarta108-v5-cache";
+const CACHE_NAME = "qarta108-v6-cache";
 const ASSETS = [
   "./index.html",
   "./manifest.json",
